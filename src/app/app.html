@@ -1,13 +1,28 @@
 <h1>{{ title() }}</h1>
 
+<!-- Top swipe card -->
 <app-swipe-card
-  *ngFor="let cat of cats; let i = index"
-  [catImage]="cat"
-  (liked)="onLiked(i)"
-  (disliked)="onDisliked(i)"
+  *ngIf="currentCat"
+  [catImage]="currentCat"
+  (liked)="onLiked()"
+  (disliked)="onDisliked()"
 ></app-swipe-card>
 
-<h2>Liked Cats:</h2>
-<div *ngFor="let liked of likedCats">
-  <img [src]="liked" width="100" />
+<!-- Optional buttons for testing on laptop (click instead of swipe) -->
+<div class="buttons" *ngIf="currentCat" style="text-align: center; margin-top: 10px;">
+  <button (click)="onDisliked()" style="margin-right: 10px;">Dislike</button>
+  <button (click)="onLiked()">Like</button>
+</div>
+
+<!-- Message when all cats are swiped -->
+<p *ngIf="!currentCat" style="text-align: center; margin-top: 20px; font-weight: bold;">
+  You swiped all the cats!
+</p>
+
+<!-- Liked cats gallery -->
+<h2 style="text-align: center; margin-top: 30px;">Liked Cats:</h2>
+<div class="liked-cats" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 10px;">
+  <div *ngFor="let liked of likedCats" class="liked-cat">
+    <img [src]="liked" width="100" style="border-radius: 8px; border: 2px solid #ccc;" />
+  </div>
 </div>

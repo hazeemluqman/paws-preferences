@@ -1,0 +1,17 @@
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.liked-cats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.liked-cat img {
+  border-radius: 8px;
+  border: 2px solid #ccc;
+}

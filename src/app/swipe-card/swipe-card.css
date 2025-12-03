@@ -1,6 +1,17 @@
+.card.swipe-left {
+  transform: translateX(-500px) rotate(-30deg);
+  opacity: 0;
+}
+
+.card.swipe-right {
+  transform: translateX(500px) rotate(30deg);
+  opacity: 0;
+}
+
 .card {
   width: 300px;
   height: 400px;
+  margin: 20px auto;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -8,7 +19,7 @@
   justify-content: center;
   align-items: center;
   background: #fff;
-  margin: 20px auto;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   touch-action: pan-y;
 }
 

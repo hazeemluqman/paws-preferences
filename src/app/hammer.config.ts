@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HammerModule, HammerGestureConfig } from '@angular/platform-browser';
-import * as Hammer from 'hammerjs';
+import Hammer from 'hammerjs';
 
 @Injectable()
 export class MyHammerConfig extends HammerGestureConfig {
