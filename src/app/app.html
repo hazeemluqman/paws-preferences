@@ -1,5 +1,10 @@
 <h1>{{ title() }}</h1>
 
+<!-- Progress -->
+<p *ngIf="currentCat" style="text-align: center; margin-bottom: 10px; font-weight: bold;">
+  Cat {{ currentPosition }}
+</p>
+
 <!-- Top swipe card -->
 <app-swipe-card
   *ngIf="currentCat"
@@ -14,15 +19,22 @@
   <button (click)="onLiked()">Like</button>
 </div>
 
-<!-- Message when all cats are swiped -->
-<p *ngIf="!currentCat" style="text-align: center; margin-top: 20px; font-weight: bold;">
-  You swiped all the cats!
-</p>
+<!-- Summary when all cats are swiped -->
+<div *ngIf="!currentCat" style="text-align: center; margin-top: 20px;">
+  <p style="font-weight: bold;">You swiped all the cats!</p>
 
-<!-- Liked cats gallery -->
-<h2 style="text-align: center; margin-top: 30px;">Liked Cats:</h2>
-<div class="liked-cats" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 10px;">
-  <div *ngFor="let liked of likedCats" class="liked-cat">
-    <img [src]="liked" width="100" style="border-radius: 8px; border: 2px solid #ccc;" />
+  <!-- Liked cats -->
+  <div *ngIf="likedCats.length > 0">
+    <h2 style="margin-top: 20px;">You liked {{ likedCats.length }} out of {{ cats.length }} cats!</h2>
+    <div class="liked-cats" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 10px;">
+      <div *ngFor="let liked of likedCats" class="liked-cat">
+        <img [src]="liked" width="100" style="border-radius: 8px; border: 2px solid #ccc;" />
+      </div>
+    </div>
+  </div>
+
+  <!-- No liked cats -->
+  <div *ngIf="likedCats.length === 0" style="margin-top: 20px;">
+    <p>You didn't like any cats 😿</p>
   </div>
 </div>

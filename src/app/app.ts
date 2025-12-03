@@ -58,10 +58,14 @@ export class App {
 
   // Move to the next card
   nextCard(): void {
-    if (this.currentIndex < this.cats.length - 1) {
-      this.currentIndex++;
-    } else {
-      console.log('All cats swiped!');
-    }
+    this.currentIndex++;
+      if (this.currentIndex >= this.cats.length) {
+        console.log('All cats swiped!');
+      }
   }
+
+  get currentPosition(): string {
+    return this.currentCat ? `${this.currentIndex + 1} of ${this.cats.length}` : '';
+  }
+
 }
